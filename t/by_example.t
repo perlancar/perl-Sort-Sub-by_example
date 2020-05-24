@@ -12,7 +12,7 @@ sort_sub_ok(
     input     => [qw/a b c d e f g h/],
     output    => [qw/a c e b d f g h/],
     output_i  => [qw/a c e b d f g h/],
-    output_ir => [qw/h g f d b e c a/],
+    #output_ir => [qw/h g f d b e c a/],
 );
 
 done_testing;

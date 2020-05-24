@@ -29,6 +29,8 @@ sub gen_sorter {
 
     my ($is_reverse, $is_ci, $args) = @_;
 
+    die "Reverse sorting not yet supported" if $is_reverse;
+
     my $example = ref $args->{example} eq 'ARRAY' ?
         [@{$args->{example}}] : [split /\s*,\s*/, $args->{example}];
     $example = [map {lc} @$example] if $is_ci;
@@ -41,7 +43,6 @@ sub gen_sorter {
             my $caller = caller();
             my $a = @_ ? $_[0] : ${"$caller\::a"};
             my $b = @_ ? $_[1] : ${"$caller\::b"};
-            -$cmp->($a, $b);
         };
     } else {
         return $cmp;
@@ -55,6 +56,6 @@ sub gen_sorter {
 
 =head1 DESCRIPTION
 
-=head1 SEE ALSO
+=head1 prepend:SEE ALSO
 
 L<Sort::ByExample>
