@@ -36,17 +36,7 @@ sub gen_sorter {
     $example = [map {lc} @$example] if $is_ci;
 
     my $cmp = Sort::ByExample->cmp($example);
-    if ($is_reverse) {
-        return sub {
-            no strict 'refs';
-
-            my $caller = caller();
-            my $a = @_ ? $_[0] : ${"$caller\::a"};
-            my $b = @_ ? $_[1] : ${"$caller\::b"};
-        };
-    } else {
-        return $cmp;
-    }
+    #use Data::Dmp; dd $cmp
 }
 
 1;
