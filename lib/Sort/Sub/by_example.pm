@@ -49,3 +49,5 @@ sub gen_sorter {
 =head1 prepend:SEE ALSO
 
 L<Sort::ByExample>
+
+L<Sort::Sub::by_sortexample>
