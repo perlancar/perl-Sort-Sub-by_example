@@ -3,6 +3,7 @@ package Sort::Sub::by_example;
 use 5.010001;
 use strict;
 use warnings;
+use Log::ger;
 
 # AUTHORITY
 # DATE
@@ -33,6 +34,8 @@ sub gen_sorter {
         [@{$args->{example}}] : [split /\s*,\s*/, $args->{example}];
     $example = [map {lc} @$example] if $is_ci;
     $example = [reverse @$example] if $is_reverse;
+
+    log_trace "example=%s", $example;
 
     my $cmp = Sort::ByExample->cmp($example);
     #use Data::Dmp; dd $cmp
