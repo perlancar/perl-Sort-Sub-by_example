@@ -29,11 +29,10 @@ sub gen_sorter {
 
     my ($is_reverse, $is_ci, $args) = @_;
 
-    die "Reverse sorting not yet supported" if $is_reverse;
-
     my $example = ref $args->{example} eq 'ARRAY' ?
         [@{$args->{example}}] : [split /\s*,\s*/, $args->{example}];
     $example = [map {lc} @$example] if $is_ci;
+    $example = [reverse @example] if $is_reverse;
 
     my $cmp = Sort::ByExample->cmp($example);
     #use Data::Dmp; dd $cmp
